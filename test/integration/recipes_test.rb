@@ -40,6 +40,8 @@ class RecipesTest < ActionDispatch::IntegrationTest
   follow_redirect!
   assert_match name_of_recipe.capitalize, response.body
   assert_match description_of_dish, response.body
+  assert_equal 'Recipe was created successfully ', flash[:success]
+
  end 
 
  test "reject invalid recipe submission" do   
