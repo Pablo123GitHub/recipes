@@ -2,14 +2,14 @@ require 'test_helper'
 
 class RecipeTest < ActiveSupport::TestCase 
   
-    def setup 
-        @chef = chefs :one   
-        @recipe = @chef.recipes.build(name:"delicious dish", description: "just awesomeness on a plate")
-    end   
-    # def setup
-    #     @chef = Chef.create!(chefname: "John", email: "john@whatever.com")
+    # def setup 
+    #     @chef = chefs :one   
     #     @recipe = @chef.recipes.build(name:"delicious dish", description: "just awesomeness on a plate")
-    # end 
+    # end   
+    def setup
+        @chef = Chef.create!(chefname: "John", email: "john@whatever.com", password: "password", password_confirmation:"password")
+        @recipe = @chef.recipes.build(name:"delicious dish", description: "just awesomeness on a plate")
+    end 
 
     test "recipe without chef should be invalid" do   
         @recipe.chef_id = nil 
