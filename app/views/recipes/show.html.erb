@@ -6,11 +6,13 @@
     <strong><%= @recipe.name %></strong>
 <%= simple_format(@recipe.description) %>
 <div class="pull-left btn"> 
+
+<% if logged_in? %>
 <%= link_to "Edit recipe", edit_recipe_path(@recipe), class: "btn btn-sx-btn-warning"%> 
 <%= link_to "Delete recipe", recipe_path(@recipe), method: :delete,
                                         data: {confirm: "are you sure?"},
-                                        class: "btn btn-sx-btn-danger"
-%>
+                                        class: "btn btn-sx-btn-danger" %>
+<% end %>
 <%= link_to "Go back to Recipes list", recipes_path %>
 
 
