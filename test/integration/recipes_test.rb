@@ -24,7 +24,7 @@ class RecipesTest < ActionDispatch::IntegrationTest
   end 
 
   test "should get recipes show" do 
-    post login_path, params: { session: { email: @chef.email, password: @chef.password} }
+    sign_in(@chef, "password")
     get recipe_path(@recipe)
     assert_template 'recipes/show'
     assert_match @recipe.name, response.body
@@ -40,7 +40,7 @@ class RecipesTest < ActionDispatch::IntegrationTest
   assert_template 'recipes/new'
   name_of_recipe = "nice dish"
   description_of_dish= "buy microwave oven food"
-  post login_path, params: { session: { email: @chef.email, password: @chef.password} }
+  sign_in(@chef, "password")
   assert_difference "Recipe.count" do   
     post recipes_path, params: { recipe: {name: name_of_recipe, description: description_of_dish } }
   end 
