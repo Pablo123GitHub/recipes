@@ -6,7 +6,8 @@ class ChefsEditTest < ActionDispatch::IntegrationTest
     @recipe = Recipe.create(name:"Seafood Paella", description:"delish Spanish food", chef: @chef)
   end 
  
-  test "reject invalid chef update" do   
+  test "reject invalid chef update" do 
+    sign_in(@chef, "password")  
     get edit_chef_path(@chef)
     assert_template 'chefs/edit'
     patch chef_path(@chef), params: {chef: {chefname:"  ",email: "  "}}
@@ -16,6 +17,7 @@ class ChefsEditTest < ActionDispatch::IntegrationTest
   end 
 
   test "successful chef update " do   
+    sign_in(@chef, "password")
     get edit_chef_path(@chef)
     assert_template 'chefs/edit'
     patch chef_path(@chef), params: {chef: {chefname:"JohnJohn", email: "johnjohn@email.com"}}
