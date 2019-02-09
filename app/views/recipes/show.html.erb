@@ -7,7 +7,7 @@
 <%= simple_format(@recipe.description) %>
 <div class="pull-left btn"> 
 
-<% if logged_in? && current_chef == @recipe.chef%>
+<% if logged_in? && (current_chef == @recipe.chef || current_chef.admin? ) %>
 <%= link_to "Edit recipe", edit_recipe_path(@recipe), class: "btn btn-sx-btn-warning"%> 
 <%= link_to "Delete recipe", recipe_path(@recipe), method: :delete,
                                         data: {confirm: "are you sure?"},
