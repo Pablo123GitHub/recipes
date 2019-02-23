@@ -15,4 +15,15 @@ RSpec.describe Ingredient, type: :model do
     empty_ingredient = Ingredient.new(name:"    ")
     expect(empty_ingredient).to_not be_valid
   end 
+
+  it "is not valid if the name is too short" do   
+    short_name_ingredient = Ingredient.new(name: "os")
+    expect(short_name_ingredient).to_not be_valid
+  end 
+
+  it "is not valid if the name is too long" do  
+    long_name = "a"*30 
+    long_name_ingredient = Ingredient.new(name: long_name)
+    expect(long_name_ingredient).to_not be_valid
+  end 
 end
