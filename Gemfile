@@ -42,6 +42,7 @@ gem 'bootstrap-will_paginate', '0.0.10'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
+  gem 'rspec-rails', '~> 3.8'
   gem 'sqlite3'
   gem 'rails-controller-testing'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
