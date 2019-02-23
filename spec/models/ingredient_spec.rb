@@ -1,29 +1,33 @@
 require 'rails_helper'
 
 RSpec.describe Ingredient, type: :model do
+  subject {
+    described_class.new(name:"mushrooms")
+  }
+
+
   it "creates a valid instance of Ingredient" do    
-    expect(Ingredient.new(name:"herbs")).to be_valid
+    expect(subject).to be_valid
   end 
   it "has a unique name for ingredient" do 
-    Ingredient.create(name:"mushrooms")
-    ingredient = Ingredient.new(name:"mushrooms")
+    subject.save
+    ingredient = Ingredient.new(name:subject.name)
     
     expect(ingredient).to_not be_valid
   end 
 
   it "is not valid if no name is present" do    
-    empty_ingredient = Ingredient.new(name:"    ")
-    expect(empty_ingredient).to_not be_valid
+    subject.name = "     "
+    expect(subject).to_not be_valid
   end 
 
   it "is not valid if the name is too short" do   
-    short_name_ingredient = Ingredient.new(name: "os")
-    expect(short_name_ingredient).to_not be_valid
+    subject.name = "a"*2
+    expect(subject).to_not be_valid
   end 
 
   it "is not valid if the name is too long" do  
-    long_name = "a"*30 
-    long_name_ingredient = Ingredient.new(name: long_name)
-    expect(long_name_ingredient).to_not be_valid
+    subject.name = "a"*30 
+    expect(subject).to_not be_valid
   end 
 end

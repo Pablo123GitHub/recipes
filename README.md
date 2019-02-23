@@ -43,6 +43,12 @@ In order to run all the tests (Minitest), you can run the following command :
 rails t
 ```
 
+Midway through the project, I have added Rspec gem in order to run testing on the Ingredient model. To run the tests on the Ingredient model, please run the following : 
+
+```
+rspec
+```
+
 You should see loads of green dots showing that the tests are passing. 
 
 ### What are the current tests : 
