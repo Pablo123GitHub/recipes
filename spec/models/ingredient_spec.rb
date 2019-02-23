@@ -30,4 +30,14 @@ RSpec.describe Ingredient, type: :model do
     subject.name = "a"*30 
     expect(subject).to_not be_valid
   end 
+
+
+ describe "Associations" do   
+  it "has many recipes" do   
+    assc = described_class.reflect_on_association(:recipe_ingredients)
+    expect(assc.macro).to eq :has_many
+  end   
+ end 
+   
+
 end
