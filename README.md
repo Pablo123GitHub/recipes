@@ -12,6 +12,7 @@ The app is deployed on [Heroku](https://desolate-fjord-91325.herokuapp.com/)... 
 * Ruby 2.4.2
 * Backend Database with Postgresql 
 * Tests with built-in testing framework : Minitest
+* Adding rails Rspec to test some models
 * Styling with Bootstrap 
 * Deployment with Heroku 
 
