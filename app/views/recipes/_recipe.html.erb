@@ -5,6 +5,7 @@
         <section class="chef-info center">
         <%= gravatar_for(recipe.chef, size: 120) %>
         </section>
+        <span class="quiet"><small>Created <%= time_ago_in_words(recipe.created_at)%> ago by <%= recipe.chef.chefname%></small></span>
     </div>
   
     <div class="col-md-8 well">
